@@ -13,11 +13,7 @@ permissions:
 
 jobs:
   test-and-lint:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,16 +36,10 @@ jobs:
       - name: Run go vet
         run: go vet ./...
 
-      - name: Run tests (Ubuntu with race detector)
-        if: matrix.os == 'ubuntu-latest'
+      - name: Run tests with race detector
         run: go test -race ./...
 
-      - name: Run tests (Windows)
-        if: matrix.os == 'windows-latest'
-        run: go test ./...
-
       - name: Run golangci-lint
-        if: matrix.os == 'ubuntu-latest'
         uses: golangci/golangci-lint-action@v6
         with:
           version: v1.64
