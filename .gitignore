@@ -1,0 +1,30 @@
+# Binaries and build artifacts
+/bin/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+usage-cli
+
+# Test and coverage artifacts
+*.test
+*.out
+coverage.*
+
+# Go workspace / vendor
+/vendor/
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local runtime state / handoff artifacts (never commit)
+.handoff/
+.usage-cli/
+*.bak.*
